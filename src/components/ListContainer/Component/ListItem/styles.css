@@ -1,0 +1,11 @@
+.grid-item {
+  display: grid;
+  align-items: center;
+}
+
+.grid-item--task {
+  grid-template-columns: repeat(1, 50px 1fr 50px);
+}
+.grid-item--folder {
+  grid-template-columns: repeat(3, 0.3fr);
+}
