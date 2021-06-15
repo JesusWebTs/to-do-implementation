@@ -1,22 +1,18 @@
 import "./App.css";
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Route } from "wouter";
 import { Header } from "./components";
 import { TaskListPage, FolderListPage } from "./pages";
 
 function App() {
   return (
     <div className="App">
-      <Header></Header>
-      <Router>
-        <Switch>
-          <Route path="/folder/:id">
-            <TaskListPage />
-          </Route>
-          <Route path="/">
-            <FolderListPage />
-          </Route>
-        </Switch>
-      </Router>
+      <Header />
+      <Route path="/folder/:id">
+        <TaskListPage />
+      </Route>
+      <Route path="/">
+        <FolderListPage />
+      </Route>
     </div>
   );
 }

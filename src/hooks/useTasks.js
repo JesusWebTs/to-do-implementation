@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-export const useTask = () => {
-  const [tasks, setTasks] = useState([]);
+export const useTask = (_tasks) => {
+  const [tasks, setTasks] = useState(_tasks);
 
   useEffect(() => {
-    console.log(tasks);
+    setTasks(_tasks);
     return () => {};
-  }, [tasks]);
+  }, []);
 
   const addNewTask = (task) => {
     setTasks((prevTask) => [...prevTask, task]);

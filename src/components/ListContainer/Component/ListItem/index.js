@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./styles.css";
 import useModal from "../../../../hooks/useModal";
 import { Modal } from "../../../";
 import { EditPage } from "../../../../pages";
-import { useHistory } from "react-router";
-function ListItem({ item, type, upload, setTasks }) {
+import { useLocation } from "wouter";
+function ListItem({ item, type, upload, remove }) {
   const { done, title, uuid, folder, tasks } = item;
   const { openModal, closeModal, showModal } = useModal();
+  const storage = window.localStorage;
+  const [location, setLocation] = useLocation();
 
-  const history = useHistory();
   return (
     <>
       {type === "task" ? (
@@ -28,13 +29,20 @@ function ListItem({ item, type, upload, setTasks }) {
           <a>- {folder}</a>
           <button
             onClick={async () => {
-              setTasks(tasks, folder);
-              history.push(`/folder/${uuid}`);
+              storage.setItem("folder", folder);
+              storage.setItem("tasks", JSON.stringify(tasks));
+              setLocation(`/folder/${uuid}`);
             }}
           >
             View items
           </button>
-          <button>Remove</button>
+          <button
+            onClick={() => {
+              remove(uuid);
+            }}
+          >
+            Remove
+          </button>
         </div>
       ) : null}
       <Modal closeModal={closeModal} show={showModal}>

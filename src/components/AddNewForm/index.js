@@ -4,7 +4,8 @@ function AddNewForm({ type, cb }) {
   const [text, setText] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
-    cb({ title: text, done: false });
+    if (type === "folder") cb({ folder: text });
+    if (type === "task") cb({ title: text, done: false });
     setText("");
   };
   return (

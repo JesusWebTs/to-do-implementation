@@ -1,23 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ListContainer, AddNewForm } from "../../components";
 import { useFolder } from "../../hooks/useFolders";
 import { useTask } from "../../hooks/useTasks";
 import "./styles.css";
 function FolderListPage() {
   const type = "folder";
-  const { folders, setTargetFolder } = useFolder();
-  const { setTasks } = useTask();
+  const { folders, addNewFolder, deleteFolder } = useFolder();
+
+  useEffect(() => {
+    console.log("Hola");
+    return () => {};
+  }, []);
+
   return (
     <div className="container">
-      <ListContainer
-        type={type}
-        listItems={folders}
-        setTasks={(tasks, folder) => {
-          setTargetFolder(folder);
-          setTasks(tasks);
-        }}
-      />
-      <AddNewForm type={type} />
+      <ListContainer type={type} listItems={folders} remove={deleteFolder} />
+      <AddNewForm type={type} cb={addNewFolder} />
     </div>
   );
 }
