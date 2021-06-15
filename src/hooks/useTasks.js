@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import task from "../moocks";
 
 export const useTask = () => {
-  const [tasks, setTasks] = useState();
+  const [tasks, setTasks] = useState([]);
+
   useEffect(() => {
-    setTasks(task);
+    console.log(tasks);
     return () => {};
-  }, []);
+  }, [tasks]);
 
   const addNewTask = (task) => {
     setTasks((prevTask) => [...prevTask, task]);
@@ -30,5 +30,5 @@ export const useTask = () => {
     setTasks(_tasks);
   };
 
-  return { tasks, addNewTask, editTask, deleteTask };
+  return { tasks, addNewTask, editTask, deleteTask, setTasks };
 };

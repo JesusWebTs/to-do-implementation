@@ -1,12 +1,22 @@
 import "./App.css";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { Header } from "./components";
-import { TaskListPage } from "./pages";
+import { TaskListPage, FolderListPage } from "./pages";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
-      <TaskListPage />
+      <Router>
+        <Switch>
+          <Route path="/folder/:id">
+            <TaskListPage />
+          </Route>
+          <Route path="/">
+            <FolderListPage />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

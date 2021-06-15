@@ -8,6 +8,7 @@ function ListContainer({
   type,
   upload = () => {},
   remove = () => {},
+  setTasks = () => {},
 }) {
   return (
     <div className="list-container">
@@ -17,6 +18,7 @@ function ListContainer({
           item={item}
           upload={upload}
           remove={remove}
+          setTasks={setTasks}
         ></ListItem>
       ))}
     </div>
