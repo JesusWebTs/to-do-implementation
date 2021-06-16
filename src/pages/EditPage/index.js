@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { ListContainer, AddNewForm } from "../../components";
-import taskList from "../../moocks";
 
-function EditPage({ title, close, upload, uuid }) {
+function EditPage({ title, close, upload, _id }) {
   const [text, setText] = useState();
   return (
     <div className="container">
@@ -12,7 +10,7 @@ function EditPage({ title, close, upload, uuid }) {
       <div>
         <button
           onClick={() => {
-            upload(uuid, { title: text });
+            upload(_id, { title: text });
             close();
           }}
         >

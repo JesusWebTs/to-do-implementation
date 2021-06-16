@@ -9,6 +9,7 @@ function Header() {
 
   useEffect(() => {
     setFolder(storage.getItem("folder"));
+    console.log("Hola")
     return () => {};
   }, [location]);
 

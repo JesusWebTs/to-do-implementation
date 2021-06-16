@@ -5,11 +5,12 @@ import { Modal } from "../../../";
 import { EditPage } from "../../../../pages";
 import { useLocation } from "wouter";
 function ListItem({ item, type, upload, remove }) {
-  const { done, title, uuid, folder, tasks } = item;
+  const { done, title, _id, folder, tasks } = item;
   const { openModal, closeModal, showModal } = useModal();
   const storage = window.localStorage;
   const [location, setLocation] = useLocation();
-
+  const F_id = storage.getItem("F_id");
+  console.log(F_id);
   return (
     <>
       {type === "task" ? (
@@ -17,10 +18,12 @@ function ListItem({ item, type, upload, remove }) {
           <input
             type="checkbox"
             checked={done}
-            onChange={() => upload(uuid, { done: !done })}
+            onChange={() => upload(_id, { done: !done })}
           />
           <a>{title}</a>
-          <button onClick={openModal}>Edit</button>
+          <button onClick={openModal} className=".item__buttom">
+            Edit
+          </button>
         </div>
       ) : null}
 
@@ -31,27 +34,24 @@ function ListItem({ item, type, upload, remove }) {
             onClick={async () => {
               storage.setItem("folder", folder);
               storage.setItem("tasks", JSON.stringify(tasks));
-              setLocation(`/folder/${uuid}`);
+              setLocation(`/folder/${_id}`);
             }}
+            className="item__buttom"
           >
             View items
           </button>
           <button
             onClick={() => {
-              remove(uuid);
+              remove(_id);
             }}
+            className="item__buttom"
           >
             Remove
           </button>
         </div>
       ) : null}
       <Modal closeModal={closeModal} show={showModal}>
-        <EditPage
-          uuid={uuid}
-          title={title}
-          upload={upload}
-          close={closeModal}
-        />
+        <EditPage _id={_id} title={title} upload={upload} close={closeModal} />
       </Modal>
     </>
   );

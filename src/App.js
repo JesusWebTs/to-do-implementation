@@ -6,13 +6,15 @@ import { TaskListPage, FolderListPage } from "./pages";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Route path="/folder/:id">
-        <TaskListPage />
-      </Route>
-      <Route path="/">
-        <FolderListPage />
-      </Route>
+      <div className="app-container">
+        <Header />
+        <Route path="/folder/:id">
+          <TaskListPage />
+        </Route>
+        <Route path="/">
+          <FolderListPage />
+        </Route>
+      </div>
     </div>
   );
 }

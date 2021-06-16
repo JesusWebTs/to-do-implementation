@@ -9,3 +9,10 @@
 .grid-item--folder {
   grid-template-columns: repeat(3, 0.3fr);
 }
+
+.item__buttom {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(38, 60, 255);
+}

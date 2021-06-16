@@ -4,11 +4,14 @@ import { useFolder } from "../../hooks/useFolders";
 import { useTask } from "../../hooks/useTasks";
 import "./styles.css";
 function FolderListPage() {
+  const storage = window.localStorage;
+  storage.setItem("folder", "");
+  storage.setItem("tasks", "");
   const type = "folder";
   const { folders, addNewFolder, deleteFolder } = useFolder();
-
   useEffect(() => {
-    console.log("Hola");
+    storage.setItem("folder", "");
+    storage.setItem("tasks", "");
     return () => {};
   }, []);
 
