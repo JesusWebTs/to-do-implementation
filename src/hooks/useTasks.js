@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { TodoConnection } from "../services/todoServices";
 import { v4 as uuidv4 } from "uuid";
-import { URI } from "../congif";
+import { URI } from "../config";
 export const useTask = (id, _tasks) => {
   const Conn = new TodoConnection(URI);
   const [tasks, setTasks] = useState(_tasks);
