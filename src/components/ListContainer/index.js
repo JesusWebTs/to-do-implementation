@@ -13,6 +13,7 @@ function ListContainer({
     <div className="list-container">
       {listItems.map((item) => (
         <ListItem
+          key={item._id}
           type={type}
           item={item}
           upload={upload}
