@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { TodoConnection } from "../services/todoServices";
-import { URI } from "../congif";
+import { URI } from "../config";
 export const useFolder = () => {
   const Conn = new TodoConnection(URI);
   const [folders, setFolders] = useState([]);
